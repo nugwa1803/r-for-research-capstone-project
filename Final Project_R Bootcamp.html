@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Agatha Ojonuga Egwemi">
+
+<title>Capstone Project</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Final Project_R Bootcamp_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Final Project_R Bootcamp_files/libs/quarto-html/quarto.js"></script>
+<script src="Final Project_R Bootcamp_files/libs/quarto-html/popper.min.js"></script>
+<script src="Final Project_R Bootcamp_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Final Project_R Bootcamp_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Final Project_R Bootcamp_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Final Project_R Bootcamp_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Final Project_R Bootcamp_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Final Project_R Bootcamp_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Final Project_R Bootcamp_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#cuckoo-eggs-dimension" id="toc-cuckoo-eggs-dimension" class="nav-link active" data-scroll-target="#cuckoo-eggs-dimension">Cuckoo Eggs Dimension</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#loading-and-naming-the-data" id="toc-loading-and-naming-the-data" class="nav-link" data-scroll-target="#loading-and-naming-the-data">Loading and naming the data</a></li>
+  </ul></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#data-summary" id="toc-data-summary" class="nav-link" data-scroll-target="#data-summary">Data Summary</a></li>
+  <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data">Missing Data</a></li>
+  <li><a href="#single-variable-analysis-and-visualization" id="toc-single-variable-analysis-and-visualization" class="nav-link" data-scroll-target="#single-variable-analysis-and-visualization">Single Variable Analysis and Visualization</a></li>
+  <li><a href="#two-variables-analysis-and-visualization" id="toc-two-variables-analysis-and-visualization" class="nav-link" data-scroll-target="#two-variables-analysis-and-visualization">Two Variables Analysis and Visualization</a></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation">Correlation</a></li>
+  </ul></li>
+  <li><a href="#inferential-statistical-analysis" id="toc-inferential-statistical-analysis" class="nav-link" data-scroll-target="#inferential-statistical-analysis">Inferential Statistical Analysis</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capstone Project</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Agatha Ojonuga Egwemi </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="cuckoo-eggs-dimension" class="level2">
+<h2 class="anchored" data-anchor-id="cuckoo-eggs-dimension">Cuckoo Eggs Dimension</h2>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This project aims to check for differences between the egg dimensons among six different Cuckoo species namely: Meadow pipit, Hedge sparrow, Tree pipit, Pied wagtail, Robin and Wren. This data is from the DAAG package by Maindonald, Braun, and Braun (2015). It presents measurement on 120 eggs laid in the nest of 6 different species of cuckoos. This data contains the following columns:</p>
+<p><strong>length</strong>: The length of eggs in millimeters</p>
+<p><strong>breadth</strong>: The breadth of eggs in millimeters</p>
+<p><strong>species</strong>: Six species of birth species</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://images.theconversation.com/files/64826/original/43x52y4z-1416304866.jpg?ixlib=rb-4.1.0&amp;q=20&amp;auto=format&amp;w=320&amp;fit=clip&amp;dpr=2&amp;usm=12&amp;cs=strip" class="img-fluid figure-img"></p>
+<figcaption>Cuckoo Eggs</figcaption>
+</figure>
+</div>
+<p>The following will be performed on the data:</p>
+<ul>
+<li><p>Data importation</p></li>
+<li><p>Exploratory data analysis (EDA).</p></li>
+<li><p>Visualization of data using appropriate plots.</p></li>
+<li><p>Inferential statistical analysis to see if there’s a difference in breadth of eggs laid by the bird species.</p></li>
+<li><p>Inferential statistical analysis to see if there’s a difference in length of eggs laid by the bird species.</p></li>
+<li><p>Results and Discussion</p></li>
+</ul>
+<section id="loading-and-naming-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="loading-and-naming-the-data">Loading and naming the data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/xrander/bootcamp-test/master/data/cuckoo.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I will assign the data imported to a variable name, “<strong>Cuckoo_Eggs</strong>” so it is easier to call out the data. From this point, the imported data will be referred to as “<strong>Cuckoo_Eggs</strong>”.</p>
+</section>
+</section>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<section id="previewing-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="previewing-the-data">Previewing the data</h4>
+<p>To get an overview of the data, I will present the first six observations ,the last six observations and ten random observations in a table</p>
+<p><strong>For the first six observations</strong>:</p>
+<div class="cell" data-tbl-cap-location="top">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span>    </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span>   </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-1" class="cell quarto-float anchored" data-tbl-cap-location="top">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: First six observations
+</figcaption>
+<div aria-describedby="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">length</th>
+<th style="text-align: right;">breadth</th>
+<th style="text-align: left;">species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">21.7</td>
+<td style="text-align: right;">16.1</td>
+<td style="text-align: left;">Meadow Pipit</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22.6</td>
+<td style="text-align: right;">17.0</td>
+<td style="text-align: left;">Meadow Pipit</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20.9</td>
+<td style="text-align: right;">16.2</td>
+<td style="text-align: left;">Meadow Pipit</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21.6</td>
+<td style="text-align: right;">16.2</td>
+<td style="text-align: left;">Meadow Pipit</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22.2</td>
+<td style="text-align: right;">16.9</td>
+<td style="text-align: left;">Meadow Pipit</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22.5</td>
+<td style="text-align: right;">16.9</td>
+<td style="text-align: left;">Meadow Pipit</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><strong>For the last six observations</strong>:</p>
+<div class="cell" data-tbl-cap-location="top">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span>   </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-2" class="cell quarto-float anchored" data-tbl-cap-location="top">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Last six observations
+</figcaption>
+<div aria-describedby="tbl-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">length</th>
+<th style="text-align: right;">breadth</th>
+<th style="text-align: left;">species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">115</td>
+<td style="text-align: right;">20.9</td>
+<td style="text-align: right;">15.9</td>
+<td style="text-align: left;">Wren</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">116</td>
+<td style="text-align: right;">22.0</td>
+<td style="text-align: right;">16.0</td>
+<td style="text-align: left;">Wren</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">117</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">15.7</td>
+<td style="text-align: left;">Wren</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">118</td>
+<td style="text-align: right;">20.8</td>
+<td style="text-align: right;">15.9</td>
+<td style="text-align: left;">Wren</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">119</td>
+<td style="text-align: right;">21.2</td>
+<td style="text-align: right;">16.0</td>
+<td style="text-align: left;">Wren</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">120</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">16.0</td>
+<td style="text-align: left;">Wren</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><strong>For ten (10) random observations</strong>:</p>
+<div class="cell" data-tbl-cap-location="top">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  car<span class="sc">::</span><span class="fu">some</span>() <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-3" class="cell quarto-float anchored" data-tbl-cap-location="top">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Ten random observations
+</figcaption>
+<div aria-describedby="tbl-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">length</th>
+<th style="text-align: right;">breadth</th>
+<th style="text-align: left;">species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">22</td>
+<td style="text-align: right;">22.0</td>
+<td style="text-align: right;">17.0</td>
+<td style="text-align: left;">Meadow Pipit</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">25</td>
+<td style="text-align: right;">19.6</td>
+<td style="text-align: right;">15.8</td>
+<td style="text-align: left;">Meadow Pipit</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">37</td>
+<td style="text-align: right;">22.2</td>
+<td style="text-align: right;">16.8</td>
+<td style="text-align: left;">Meadow Pipit</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">45</td>
+<td style="text-align: right;">24.4</td>
+<td style="text-align: right;">16.2</td>
+<td style="text-align: left;">Meadow Pipit</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">51</td>
+<td style="text-align: right;">21.8</td>
+<td style="text-align: right;">16.7</td>
+<td style="text-align: left;">Tree Pipit</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">52</td>
+<td style="text-align: right;">21.1</td>
+<td style="text-align: right;">16.5</td>
+<td style="text-align: left;">Tree Pipit</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">61</td>
+<td style="text-align: right;">22.0</td>
+<td style="text-align: right;">17.0</td>
+<td style="text-align: left;">Hedge Sparrow</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">80</td>
+<td style="text-align: right;">23.0</td>
+<td style="text-align: right;">16.1</td>
+<td style="text-align: left;">Robin</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">87</td>
+<td style="text-align: right;">22.0</td>
+<td style="text-align: right;">16.0</td>
+<td style="text-align: left;">Robin</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">91</td>
+<td style="text-align: right;">23.0</td>
+<td style="text-align: right;">16.3</td>
+<td style="text-align: left;">Pied Wagtail</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="data-summary" class="level3">
+<h3 class="anchored" data-anchor-id="data-summary">Data Summary</h3>
+<p>Getting a simple summary of the data:</p>
+<p>i. Number of rows</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span>    </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 120</code></pre>
+</div>
+</div>
+<p>ii. Number of columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ncol</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>iii. Name of data variables</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "length"  "breadth" "species"</code></pre>
+</div>
+</div>
+<p>iv. Structure of data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   120 obs. of  3 variables:
+ $ length : num  21.7 22.6 20.9 21.6 22.2 22.5 22.2 24.3 22.3 22.6 ...
+ $ breadth: num  16.1 17 16.2 16.2 16.9 16.9 17.3 16.8 16.8 17 ...
+ $ species: chr  "Meadow Pipit" "Meadow Pipit" "Meadow Pipit" "Meadow Pipit" ...</code></pre>
+</div>
+</div>
+<p>This gives a summary of the data structure. The Cuckoo egg dimension data has 120 observations with 3 variables namely; length, breadth and species. Length and breadth are numerical variables while Species is a factor with 6 levels.</p>
+<p>v. Summary of data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     length         breadth        species         
+ Min.   :19.60   Min.   :15.00   Length:120        
+ 1st Qu.:21.90   1st Qu.:16.20   Class :character  
+ Median :22.35   Median :16.60   Mode  :character  
+ Mean   :22.45   Mean   :16.55                     
+ 3rd Qu.:23.23   3rd Qu.:17.00                     
+ Max.   :25.00   Max.   :17.50                     </code></pre>
+</div>
+</div>
+<p>All the above rsult can also be gotten fromjust skimming the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim_without_charts</span>(Cuckoo_Eggs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">Cuckoo_Eggs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">120</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">species</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">length</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">22.45</td>
+<td style="text-align: right;">1.07</td>
+<td style="text-align: right;">19.6</td>
+<td style="text-align: right;">21.9</td>
+<td style="text-align: right;">22.35</td>
+<td style="text-align: right;">23.22</td>
+<td style="text-align: right;">25.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">breadth</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">16.55</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">15.0</td>
+<td style="text-align: right;">16.2</td>
+<td style="text-align: right;">16.60</td>
+<td style="text-align: right;">17.00</td>
+<td style="text-align: right;">17.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>This gives a summary of the data, showinh the mean, median, minimum and muximum values of the numeriacal varables. It also shows the amount of obeservations for easch species, showig that the Meadow Pipit has the highest number of observations.</p>
+</section>
+<section id="missing-data" class="level3">
+<h3 class="anchored" data-anchor-id="missing-data">Missing Data</h3>
+<p>To check if there is any missing data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(Cuckoo_Eggs) <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colSums</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">length</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">breadth</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">species</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>There is(are) no missing value(s) in the imported data.</p>
+</section>
+<section id="single-variable-analysis-and-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="single-variable-analysis-and-visualization">Single Variable Analysis and Visualization</h3>
+<p>I will explore and analyse the various variables that are contained in the data set: length, breadth and species.</p>
+<section id="exploring-length" class="level4">
+<h4 class="anchored" data-anchor-id="exploring-length">Exploring Length</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Cuckoo_Eggs<span class="sc">$</span>length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22.45</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(Cuckoo_Eggs<span class="sc">$</span>length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22.35</code></pre>
+</div>
+</div>
+<p>same can also be done with the other numerical variable; breadth. although this is alraedfy contained above from the data summary.</p>
+</section>
+<section id="different-lengths-and-their-frequency-arranged-in-descending-order-of-length" class="level4">
+<h4 class="anchored" data-anchor-id="different-lengths-and-their-frequency-arranged-in-descending-order-of-length">Different lengths and their frequency, arranged in descending order of length</h4>
+<p><strong>Printing only 20 observations</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span>  </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(length) <span class="sc">|&gt;</span>   </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(length)) <span class="sc">|&gt;</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="dv">20</span>)      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+| length|  n|
+|------:|--:|
+|   25.0|  1|
+|   24.9|  1|
+|   24.4|  1|
+|   24.3|  1|
+|   24.0|  7|
+|   23.9|  2|
+|   23.8|  4|
+|   23.7|  1|
+|   23.6|  1|
+|   23.5|  2|
+|   23.4|  3|
+|   23.3|  6|
+|   23.2|  1|
+|   23.1|  3|
+|   23.0|  9|
+|   22.9|  1|
+|   22.8|  4|
+|   22.7|  1|
+|   22.6|  4|
+|   22.5|  2|
+|   22.4|  5|
+|   22.3|  6|
+|   22.2|  4|
+|   22.1|  6|
+|   22.0| 13|
+|   21.9|  4|
+|   21.8|  4|
+|   21.7|  3|
+|   21.6|  1|
+|   21.5|  1|
+|   21.2|  1|
+|   21.1|  2|
+|   21.0|  4|
+|   20.9|  4|
+|   20.8|  1|
+|   20.6|  1|
+|   20.3|  1|
+|   20.1|  1|
+|   20.0|  1|
+|   19.8|  1|
+|   19.6|  1|</code></pre>
+</div>
+</div>
+<p>This shows twenty (20) different lengths and their frequency,. With this, we see that <strong>22.0</strong> has the highest frequency. The lengths are then arranged in a descending order.</p>
+</section>
+<section id="visualizing-length" class="level4">
+<h4 class="anchored" data-anchor-id="visualizing-length">Visualizing Length</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cuckoo_Eggs, <span class="fu">aes</span>(length)) <span class="sc">+</span>  </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(    </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"violet"</span>,    </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="dv">1</span>   )<span class="sc">+</span>  </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(    </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Length (mm)"</span>,  </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Density"</span>,    </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Density distribution of Cuckoo Egg length"</span>,  </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"A.O Egwemi@2024"</span>   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Final-Project_R-Bootcamp_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Visualizing Breadth with a histogram, showing how many breadth measrements fall within a particular range</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span>   </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(breadth))<span class="sc">+</span>  </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(    </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"slateblue3"</span>,     </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"khaki3"</span>,    </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> .<span class="dv">20</span>   )<span class="sc">+</span>  </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(    </span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Breadth (mm)"</span>,  </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span> <span class="st">"Frequency"</span>,   </span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequency Distribution of Cuckoo Eggs Breadth"</span>   )<span class="sc">+</span> </span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()<span class="sc">+</span>  </span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(  </span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,.<span class="dv">5</span>)   )<span class="sc">+</span>  </span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(    </span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">2</span>)   )   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Final-Project_R-Bootcamp_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Visualizing count of species with a bar chart</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cuckoo_Eggs, <span class="fu">aes</span>(species)) <span class="sc">+</span>  </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(   </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill=</span> <span class="st">"palevioletred3"</span>   )<span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(    </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span> <span class="st">"Species"</span>,  </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span> <span class="st">"Frequency"</span>,   </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Species Count"</span>      )<span class="sc">+</span>  </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(   </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">2</span>)   )<span class="sc">+</span> </span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Final-Project_R-Bootcamp_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This chart shows that the meadow pipit is the species with the highest count/frequency as initially seen in the data summary.</p>
+</section>
+</section>
+<section id="two-variables-analysis-and-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="two-variables-analysis-and-visualization">Two Variables Analysis and Visualization</h3>
+<p>The total and average length/breadth of each species can also be presented in a table and visualized</p>
+<div class="cell" data-tbl-cap-location="top">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span>   </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(    </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> species,   </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Total_length =</span> <span class="fu">sum</span>(length),  </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Average_length =</span> <span class="fu">mean</span>(length),  </span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Total_breadth =</span> <span class="fu">sum</span>(breadth),    </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Average_breadth =</span> <span class="fu">mean</span>(breadth) </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span>   </span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-4" class="cell quarto-float anchored" data-tbl-cap-location="top">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Summary of species Average and total measurements of eggs
+</figcaption>
+<div aria-describedby="tbl-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 18%">
+<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">species</th>
+<th style="text-align: right;">Total_length</th>
+<th style="text-align: right;">Average_length</th>
+<th style="text-align: right;">Total_breadth</th>
+<th style="text-align: right;">Average_breadth</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Meadow Pipit</td>
+<td style="text-align: right;">1003.2</td>
+<td style="text-align: right;">22.29333</td>
+<td style="text-align: right;">753.3</td>
+<td style="text-align: right;">16.74000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tree Pipit</td>
+<td style="text-align: right;">346.2</td>
+<td style="text-align: right;">23.08000</td>
+<td style="text-align: right;">250.0</td>
+<td style="text-align: right;">16.66667</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hedge Sparrow</td>
+<td style="text-align: right;">323.6</td>
+<td style="text-align: right;">23.11429</td>
+<td style="text-align: right;">234.7</td>
+<td style="text-align: right;">16.76429</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Robin</td>
+<td style="text-align: right;">360.9</td>
+<td style="text-align: right;">22.55625</td>
+<td style="text-align: right;">263.2</td>
+<td style="text-align: right;">16.45000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pied Wagtail</td>
+<td style="text-align: right;">343.3</td>
+<td style="text-align: right;">22.88667</td>
+<td style="text-align: right;">247.5</td>
+<td style="text-align: right;">16.50000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Wren</td>
+<td style="text-align: right;">316.8</td>
+<td style="text-align: right;">21.12000</td>
+<td style="text-align: right;">237.5</td>
+<td style="text-align: right;">15.83333</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Visualizing the total length and species:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span>  </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(    </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> species,    </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Total_length =</span> <span class="fu">sum</span>(length),   </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Average_length =</span> <span class="fu">mean</span>(length), </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Total_breadth =</span> <span class="fu">sum</span>(breadth),  </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Average_breadth =</span> <span class="fu">mean</span>(breadth)     ) <span class="sc">|&gt;</span> </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(species,Total_length))<span class="sc">+</span>  </span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">col=</span><span class="st">"brown"</span>, <span class="at">fill =</span> <span class="st">"yellow"</span>)<span class="sc">+</span> </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(   </span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Chart showing the different species and the total length(mm) of their eggs"</span>   )  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Final-Project_R-Bootcamp_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This shows that the Meadow pipit has the longest length of eggs. However to know which species egg is best in terms of length, we use the average length of egg. This can be visualized using a boxplot. This shows that the Tree Pipit has the highest median length of eggs. This suggests that on average, it has the longest eggs This can also be visualized.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span>  </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(species, length, <span class="at">fill =</span> species))<span class="sc">+</span>  </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span>  </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(    </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Average length(mm) of eggs from different species"</span>  </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Final-Project_R-Bootcamp_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="correlation" class="level3">
+<h3 class="anchored" data-anchor-id="correlation">Correlation</h3>
+<p>Checking to see if the length and breadth of each species is correlated:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Cuckoo_Eggs<span class="sc">$</span>length, Cuckoo_Eggs<span class="sc">$</span>breadth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5017711</code></pre>
+</div>
+</div>
+<p>The output suggest that the length and breadth are positively correlated ( the absence of a negative sign), but the value also suggests that the correlation is not strong.</p>
+<p>This can be visualized to see a trend line:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Cuckoo_Eggs <span class="sc">|&gt;</span>   </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(length,breadth))<span class="sc">+</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">col=</span> <span class="st">"dodgerblue"</span>)<span class="sc">+</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">col =</span> <span class="st">"plum4"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y~x"</span>)<span class="sc">+</span>  </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(   </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Correlation between the egg length(mm) and egg breadth(mm) across different species"</span> </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Final-Project_R-Bootcamp_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This plot shows that the trend line slopes upwards, indicating a positive correlation (as length of egg increases, the egg breadth may also increase as well). However, there are still a lot of points scattered around the trend line, suggesting a not so strong correlation between egg length and egg breadth.</p>
+</section>
+</section>
+<section id="inferential-statistical-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="inferential-statistical-analysis">Inferential Statistical Analysis</h2>
+<p><strong>Breadth</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>breadth_anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(breadth<span class="sc">~</span>species, <span class="at">data =</span> Cuckoo_Eggs) <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anova</span>()</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="do">##Viewing the ANOVA table </span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>breadth_anova </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: breadth
+           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+species     5 10.373 2.07457  10.885 1.412e-08 ***
+Residuals 114 21.727 0.19059                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Getting a summary of the ANOVA table </span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(breadth_anova) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Df             Sum Sq         Mean Sq          F value          Pr(&gt;F) 
+ Min.   :  5.00   Min.   :10.37   Min.   :0.1906   Min.   :10.89   Min.   :0  
+ 1st Qu.: 32.25   1st Qu.:13.21   1st Qu.:0.6616   1st Qu.:10.89   1st Qu.:0  
+ Median : 59.50   Median :16.05   Median :1.1326   Median :10.89   Median :0  
+ Mean   : 59.50   Mean   :16.05   Mean   :1.1326   Mean   :10.89   Mean   :0  
+ 3rd Qu.: 86.75   3rd Qu.:18.89   3rd Qu.:1.6036   3rd Qu.:10.89   3rd Qu.:0  
+ Max.   :114.00   Max.   :21.73   Max.   :2.0746   Max.   :10.89   Max.   :0  
+                                                   NA's   :1       NA's   :1  </code></pre>
+</div>
+</div>
+<p><strong>Post-hoc test</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Installing the package used to run a post-hoc test</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"TukeyC"</span>, <span class="at">repos =</span> <span class="st">"https://cran.rstudio.com/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>package 'TukeyC' successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\HP\AppData\Local\Temp\RtmpQTKYkZ\downloaded_packages</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TukeyC) </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>breadth_aov <span class="ot">&lt;-</span><span class="fu">aov</span>(breadth<span class="sc">~</span>species, <span class="at">data =</span> Cuckoo_Eggs) </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyC</span>(breadth_aov)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Results
+              Means G1 G2
+Hedge Sparrow 16.76  a   
+Meadow Pipit  16.74  a   
+Tree Pipit    16.67  a   
+Pied Wagtail  16.50  a   
+Robin         16.45  a   
+Wren          15.83     b
+
+Sig.level
+ 0.05
+
+Diff_Prob
+              Hedge Sparrow Meadow Pipit Tree Pipit Pied Wagtail Robin  Wren
+Hedge Sparrow         0.000        0.024      0.098        0.264 0.314 0.931
+Meadow Pipit          1.000        0.000      0.073        0.240 0.290 0.907
+Tree Pipit            0.991        0.993      0.000        0.167 0.217 0.833
+Pied Wagtail          0.581        0.442      0.901        0.000 0.050 0.667
+Robin                 0.368        0.210      0.738        1.000 0.000 0.617
+Wren                  0.000        0.000      0.000        0.001 0.002 0.000
+
+MSD
+              Hedge Sparrow Meadow Pipit Tree Pipit Pied Wagtail Robin  Wren
+Hedge Sparrow         0.000        0.387      0.470        0.470 0.463 0.470
+Meadow Pipit          0.387        0.000      0.377        0.377 0.368 0.377
+Tree Pipit            0.470        0.377      0.000        0.462 0.455 0.462
+Pied Wagtail          0.470        0.377      0.462        0.000 0.455 0.462
+Robin                 0.463        0.368      0.455        0.455 0.000 0.455
+Wren                  0.470        0.377      0.462        0.462 0.455 0.000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Visualizing the differences</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyC</span>(breadth_aov) <span class="sc">|&gt;</span>    <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Final-Project_R-Bootcamp_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Length</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>length_anova <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">aov</span>(length <span class="sc">~</span> species, <span class="at">data=</span> Cuckoo_Eggs)) </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="do">##Viewing the ANOVA table </span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>length_anova  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: length
+           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+species     5  42.81  8.5620  10.449 2.852e-08 ***
+Residuals 114  93.41  0.8194                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Getting a summary of the ANOVA table </span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(length_anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Df             Sum Sq         Mean Sq          F value          Pr(&gt;F) 
+ Min.   :  5.00   Min.   :42.81   Min.   :0.8194   Min.   :10.45   Min.   :0  
+ 1st Qu.: 32.25   1st Qu.:55.46   1st Qu.:2.7550   1st Qu.:10.45   1st Qu.:0  
+ Median : 59.50   Median :68.11   Median :4.6907   Median :10.45   Median :0  
+ Mean   : 59.50   Mean   :68.11   Mean   :4.6907   Mean   :10.45   Mean   :0  
+ 3rd Qu.: 86.75   3rd Qu.:80.76   3rd Qu.:6.6264   3rd Qu.:10.45   3rd Qu.:0  
+ Max.   :114.00   Max.   :93.41   Max.   :8.5620   Max.   :10.45   Max.   :0  
+                                                   NA's   :1       NA's   :1  </code></pre>
+</div>
+</div>
+<p><strong>Post-hoc test</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>length_aov <span class="ot">&lt;-</span><span class="fu">aov</span>(length <span class="sc">~</span> species, <span class="at">data=</span> Cuckoo_Eggs) </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyC</span>(length_aov) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Results
+              Means G1 G2 G3
+Hedge Sparrow 23.11  a      
+Tree Pipit    23.08  a      
+Pied Wagtail  22.89  a  b   
+Robin         22.56  a  b   
+Meadow Pipit  22.29     b   
+Wren          21.12        c
+
+Sig.level
+ 0.05
+
+Diff_Prob
+              Hedge Sparrow Tree Pipit Pied Wagtail Robin Meadow Pipit  Wren
+Hedge Sparrow         0.000      0.034        0.228 0.558        0.821 1.994
+Tree Pipit            1.000      0.000        0.193 0.524        0.787 1.960
+Pied Wagtail          0.984      0.992        0.000 0.330        0.593 1.767
+Robin                 0.545      0.594        0.912 0.000        0.263 1.436
+Meadow Pipit          0.042      0.048        0.247 0.918        0.000 1.173
+Wren                  0.000      0.000        0.000 0.000        0.000 0.000
+
+MSD
+              Hedge Sparrow Tree Pipit Pied Wagtail Robin Meadow Pipit  Wren
+Hedge Sparrow         0.000      0.975        0.975 0.960        0.803 0.975
+Tree Pipit            0.975      0.000        0.958 0.943        0.782 0.958
+Pied Wagtail          0.975      0.958        0.000 0.943        0.782 0.958
+Robin                 0.960      0.943        0.943 0.000        0.764 0.943
+Meadow Pipit          0.803      0.782        0.782 0.764        0.000 0.782
+Wren                  0.975      0.958        0.958 0.943        0.782 0.000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Visualizing the differences</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyC</span>(length_aov) <span class="sc">|&gt;</span> </span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Final-Project_R-Bootcamp_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>From the results of the ANOVA on the breadth of eggs, the p-value is less than 0.05, implying that there is significant difference in the breadths of the eggs of differnet species. The Tukey’s post-hoc test showed where exactly the difference lies. The eggs of all species except the Wren have similar mean breadths ranging from 16.45 to 16.76 which is not significantly different. However the egg of the Wren has a mean breadth of 15.83 which is significantly different and smaller from the other species. This is also denoted by the grouping “b”. This is also visualized with the plot.</p>
+<p>For the length of eggs, the ANOVA result also implies a significant difference in the egg length of the different species. To confirm where the differences exist, the post hoc test was performed and it showed that the Wren egg length was significantly different from all other species. The Robin and Pied Wagtail grouped as ‘b’ had mean egg lengths that were significantly different from the Wren but not different from the other species. The Meadow Pipit’s eggs are significantly shorter than those of Hedge Sparrow and Tree Pipit but not significantly different from Robin and Pied Wagtail, positioning it in group “b”.</p>
+<p>From this analysis, we can conclude that significant differences exist in the dimensions of the eggs laid by the the differnt cuckoo species. The egg of the Wren can be considered the smallest having the lowest mean length and breadth.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Maindonald, John H, W John Braun, and Maintainer W John Braun. 2015.&nbsp;“Package&nbsp;‘DAAG’.”&nbsp;<em>Data Analysis and Graphics Data and Functions</em>.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

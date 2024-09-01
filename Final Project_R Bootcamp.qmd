@@ -1,0 +1,363 @@
+---
+title: "Capstone Project"
+author: "Agatha Ojonuga Egwemi"
+format: html
+toc: true
+toc-depth: 3
+toc-title: "Table of Contents"
+---
+
+## Cuckoo Eggs Dimension
+
+## Introduction
+
+This project aims to check for differences between the egg dimensons among six different Cuckoo species namely: Meadow pipit, Hedge sparrow, Tree pipit, Pied wagtail, Robin and Wren. This data is from the DAAG package by Maindonald, Braun, and Braun (2015). It presents measurement on 120 eggs laid in the nest of 6 different species of cuckoos. This data contains the following columns:
+
+**length**: The length of eggs in millimeters
+
+**breadth**: The breadth of eggs in millimeters
+
+**species**: Six species of birth species
+
+![Cuckoo Eggs](https://images.theconversation.com/files/64826/original/43x52y4z-1416304866.jpg?ixlib=rb-4.1.0&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip)
+
+The following will be performed on the data:
+
+-   Data importation
+
+-   Exploratory data analysis (EDA).
+
+-   Visualization of data using appropriate plots.
+
+-   Inferential statistical analysis to see if there’s a difference in breadth of eggs laid by the bird species.
+
+-   Inferential statistical analysis to see if there’s a difference in length of eggs laid by the bird species.
+
+-   Results and Discussion
+
+### Loading and naming the data
+
+```{r}
+#| message: false 
+#| warning: false  
+library(tidyverse) 
+library(ggplot2) 
+
+Cuckoo_Eggs <- read.csv("https://raw.githubusercontent.com/xrander/bootcamp-test/master/data/cuckoo.csv")
+```
+
+I will assign the data imported to a variable name, "**Cuckoo_Eggs**" so it is easier to call out the data. From this point, the imported data will be referred to as "**Cuckoo_Eggs**".
+
+## Exploratory Data Analysis
+
+#### Previewing the data
+
+To get an overview of the data, I will present the first six observations ,the last six observations and ten random observations in a table
+
+**For the first six observations**:
+
+```{r}
+#| label: tbl-1 
+#| tbl-cap: First six observations 
+#| tbl-cap-location: top 
+Cuckoo_Eggs |>    
+  head() |>   
+  knitr::kable()
+```
+
+**For the last six observations**:
+
+```{r}
+#| label: tbl-2 
+#| tbl-cap: Last six observations
+#| tbl-cap-location: top
+Cuckoo_Eggs |>   
+  tail() |> 
+  knitr::kable()   
+```
+
+**For ten (10) random observations**:
+
+```{r}
+#| label: tbl-3 
+#| tbl-cap: Ten random observations 
+#| tbl-cap-location: top  
+Cuckoo_Eggs |>
+  car::some() |>
+  knitr::kable()
+```
+
+### Data Summary
+
+Getting a simple summary of the data:
+
+i\. Number of rows
+
+```{r}
+Cuckoo_Eggs |>    
+  nrow()
+```
+
+ii\. Number of columns
+
+```{r}
+Cuckoo_Eggs |>
+  ncol()
+```
+
+iii\. Name of data variables
+
+```{r}
+Cuckoo_Eggs |>
+  names()
+```
+
+iv\. Structure of data
+
+```{r}
+Cuckoo_Eggs |> 
+  str()
+```
+
+This gives a summary of the data structure. The Cuckoo egg dimension data has 120 observations with 3 variables namely; length, breadth and species. Length and breadth are numerical variables while Species is a factor with 6 levels.
+
+v\. Summary of data
+
+```{r}
+Cuckoo_Eggs |>
+  summary()
+```
+
+All the above rsult can also be gotten fromjust skimming the data:
+
+```{r}
+skimr::skim_without_charts(Cuckoo_Eggs)
+```
+
+This gives a summary of the data, showinh the mean, median, minimum and muximum values of the numeriacal varables. It also shows the amount of obeservations for easch species, showig that the Meadow Pipit has the highest number of observations.
+
+### Missing Data
+
+To check if there is any missing data:
+
+```{r}
+is.na(Cuckoo_Eggs) |> 
+  colSums() |>  
+  knitr::kable()
+```
+
+There is(are) no missing value(s) in the imported data.
+
+### Single Variable Analysis and Visualization
+
+I will explore and analyse the various variables that are contained in the data set: length, breadth and species.
+
+#### Exploring Length
+
+```{r}
+mean(Cuckoo_Eggs$length)
+median(Cuckoo_Eggs$length)
+```
+
+same can also be done with the other numerical variable; breadth. although this is alraedfy contained above from the data summary.
+
+#### Different lengths and their frequency, arranged in descending order of length
+
+**Printing only 20 observations**:
+
+```{r}
+Cuckoo_Eggs |>  
+  count(length) |>   
+  arrange(desc(length)) |> 
+  knitr::kable() |>  
+  print(20)      
+```
+
+This shows twenty (20) different lengths and their frequency,. With this, we see that **22.0** has the highest frequency. The lengths are then arranged in a descending order.
+
+#### Visualizing Length
+
+```{r}
+ggplot(Cuckoo_Eggs, aes(length)) +  
+  geom_density(    
+    col = "violet",    
+    linewidth = 1   )+  
+  labs(    
+    x = "Length (mm)",  
+    y = "Density",    
+    title = "Density distribution of Cuckoo Egg length",  
+    caption = "A.O Egwemi@2024"   )
+```
+
+**Visualizing Breadth with a histogram, showing how many breadth measrements fall within a particular range**
+
+```{r}
+Cuckoo_Eggs |>   
+  ggplot(aes(breadth))+  
+  geom_histogram(    
+    col = "slateblue3",     
+    fill = "khaki3",    
+    binwidth = .20   )+  
+  labs(    
+    x = "Breadth (mm)",  
+    y= "Frequency",   
+    title = "Frequency Distribution of Cuckoo Eggs Breadth"   )+ 
+  theme_light()+  
+  scale_x_continuous(  
+    breaks = seq(0,20,.5)   )+  
+  scale_y_continuous(    
+    breaks = seq(0,20,2)   )   
+```
+
+**Visualizing count of species with a bar chart**
+
+```{r}
+ggplot(Cuckoo_Eggs, aes(species)) +  
+  geom_bar(   
+    fill= "palevioletred3"   )+
+  labs(    
+    x= "Species",  
+    y= "Frequency",   
+    title = "Species Count"      )+  
+  scale_y_continuous(   
+    breaks = seq(0,50,2)   )+ 
+  theme_minimal() 
+```
+
+This chart shows that the meadow pipit is the species with the highest count/frequency as initially seen in the data summary.
+
+### Two Variables Analysis and Visualization
+
+The total and average length/breadth of each species can also be presented in a table and visualized
+
+```{r}
+#| label: tbl-4 
+#| tbl-cap: Summary of species Average and total measurements of eggs
+#| tbl-cap-location: top
+Cuckoo_Eggs |>   
+  summarise(    
+    .by = species,   
+    Total_length = sum(length),  
+    Average_length = mean(length),  
+    Total_breadth = sum(breadth),    
+    Average_breadth = mean(breadth) 
+    ) |>   
+  knitr::kable()    
+```
+
+Visualizing the total length and species:
+
+```{r}
+Cuckoo_Eggs |>  
+  summarise(    
+    .by = species,    
+    Total_length = sum(length),   
+    Average_length = mean(length), 
+    Total_breadth = sum(breadth),  
+    Average_breadth = mean(breadth)     ) |> 
+  ggplot(aes(species,Total_length))+  
+  geom_bar(stat = "identity", col="brown", fill = "yellow")+ 
+  labs(   
+    title = "Chart showing the different species and the total length(mm) of their eggs"   )  
+```
+
+This shows that the Meadow pipit has the longest length of eggs. However to know which species egg is best in terms of length, we use the average length of egg. This can be visualized using a boxplot. This shows that the Tree Pipit has the highest median length of eggs. This suggests that on average, it has the longest eggs This can also be visualized.
+
+```{r}
+Cuckoo_Eggs |>  
+  ggplot(aes(species, length, fill = species))+  
+  geom_boxplot()+  
+  labs(    
+    title = "Average length(mm) of eggs from different species"  
+    )
+```
+
+### Correlation
+
+Checking to see if the length and breadth of each species is correlated:
+
+```{r}
+cor(Cuckoo_Eggs$length, Cuckoo_Eggs$breadth)
+```
+
+The output suggest that the length and breadth are positively correlated ( the absence of a negative sign), but the value also suggests that the correlation is not strong.
+
+This can be visualized to see a trend line:
+
+```{r}
+Cuckoo_Eggs |>   
+  ggplot(aes(length,breadth))+ 
+  geom_jitter(col= "dodgerblue")+ 
+  geom_smooth(col = "plum4", se = FALSE, method = "loess", formula = "y~x")+  
+  labs(   
+    title = "Correlation between the egg length(mm) and egg breadth(mm) across different species" 
+    ) 
+```
+
+This plot shows that the trend line slopes upwards, indicating a positive correlation (as length of egg increases, the egg breadth may also increase as well). However, there are still a lot of points scattered around the trend line, suggesting a not so strong correlation between egg length and egg breadth.
+
+## Inferential Statistical Analysis
+
+**Breadth**
+
+```{r}
+breadth_anova <- aov(breadth~species, data = Cuckoo_Eggs) |> 
+  anova()
+
+##Viewing the ANOVA table 
+breadth_anova 
+
+##Getting a summary of the ANOVA table 
+summary(breadth_anova) 
+```
+
+**Post-hoc test**
+
+```{r}
+#| message: false 
+#| warning: false 
+
+##Installing the package used to run a post-hoc test
+install.packages("TukeyC", repos = "https://cran.rstudio.com/")
+library(TukeyC) 
+breadth_aov <-aov(breadth~species, data = Cuckoo_Eggs) 
+TukeyC(breadth_aov)  
+
+##Visualizing the differences
+TukeyC(breadth_aov) |>    plot()
+```
+
+**Length**
+
+```{r}
+length_anova <- anova(aov(length ~ species, data= Cuckoo_Eggs)) 
+
+##Viewing the ANOVA table 
+length_anova  
+
+##Getting a summary of the ANOVA table 
+summary(length_anova)
+```
+
+**Post-hoc test**
+
+```{r}
+length_aov <-aov(length ~ species, data= Cuckoo_Eggs) 
+TukeyC(length_aov) 
+
+##Visualizing the differences
+TukeyC(length_aov) |> 
+  plot()
+```
+
+## Summary
+
+From the results of the ANOVA on the breadth of eggs, the p-value is less than 0.05, implying that there is significant difference in the breadths of the eggs of differnet species. The Tukey's post-hoc test showed where exactly the difference lies. The eggs of all species except the Wren have similar mean breadths ranging from 16.45 to 16.76 which is not significantly different. However the egg of the Wren has a mean breadth of 15.83 which is significantly different and smaller from the other species. This is also denoted by the grouping "b". This is also visualized with the plot.
+
+For the length of eggs, the ANOVA result also implies a significant difference in the egg length of the different species. To confirm where the differences exist, the post hoc test was performed and it showed that the Wren egg length was significantly different from all other species. The Robin and Pied Wagtail grouped as 'b' had mean egg lengths that were significantly different from the Wren but not different from the other species. The Meadow Pipit’s eggs are significantly shorter than those of Hedge Sparrow and Tree Pipit but not significantly different from Robin and Pied Wagtail, positioning it in group "b".
+
+From this analysis, we can conclude that significant differences exist in the dimensions of the eggs laid by the the differnt cuckoo species. The egg of the Wren can be considered the smallest having the lowest mean length and breadth.
+
+## References
+
+Maindonald, John H, W John Braun, and Maintainer W John Braun. 2015. “Package ‘DAAG’.” *Data Analysis and Graphics Data and Functions*.
